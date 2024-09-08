@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather Information</title>
+</head>
+<body>
+    <h1>Current Weather</h1>
+    <p th:text="'Temperature: ' + ${weather.main.temp} + ' °F'"></p>
+    <p th:text="'Description: ' + ${weather.weather[0].description}"></p>
+
+    <h2>Weather History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Postal Code</th>
+                <th>Temperature</th>
+                <th>Description</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="record : ${history}">
+                <td th:text="${record.postalCode}"></td>
+                <td th:text="${record.temperature}"></td>
+                <td th:text="${record.description}"></td>
+                <td th:text="${record.timestamp}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
